@@ -13,7 +13,7 @@ body {
 }
   
 .container {
-    background-image: url(/assets/rain.png);
+    background-image: url(./assets/rain.png);
     width: 100%;
     max-width: 400px;
     background-color: white;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <div class="container">
@@ -42,7 +42,7 @@
                     <p>Cloudy conditions expected.</p>
                 </div>
                 <div class="message-figure">
-                    <img src="/assets/dressing_helper.png" alt="Weather Icon">
+                    <img src="./assets/dressing_helper.png" alt="Weather Icon">
                 </div>
             </div>
         </div>
@@ -112,19 +112,19 @@
 
         <div class="menu-bar">
             <div class="menu-item">
-                <img src="/assets/UV.png" alt="UV Index">
+                <img src="./assets/UV.png" alt="UV Index">
                 <span>UV Index</span>
             </div>
             <div class="menu-item">
-                <img src="/assets/wind_speed.png" alt="Wind Speed">
+                <img src="./assets/wind_speed.png" alt="Wind Speed">
                 <span>Wind Speed</span>
             </div>
             <div class="menu-item">
-                <img src="/assets/humidity.png" alt="Humidity">
+                <img src="./assets/humidity.png" alt="Humidity">
                 <span>Humidity</span>
             </div>
             <div class="menu-item">
-                <img src="/assets/visibility.png" alt="Visibility">
+                <img src="./assets/visibility.png" alt="Visibility">
                 <span>Visibility</span>
             </div>
         </div>
@@ -147,19 +147,19 @@
         "Beijing": ["High pollution levels.", "Stay indoors if possible."]
     };
     const cityImg = {
-        "Philadelphia": "/assets/rain.png",
-        "New York": "/assets/rain.png",
-        "Boston": "/assets/sunny.png",
-        "New Haven": "/assets/sunny.png",
-        "Beijing": "/assets/sunny.png"
+        "Philadelphia": "./assets/rain.png",
+        "New York": "./assets/rain.png",
+        "Boston": "./assets/sunny.png",
+        "New Haven": "./assets/sunny.png",
+        "Beijing": "./assets/sunny.png"
     }
 
     const cityDressing = {
-        "Philadelphia": "/assets/dressing_helper.png",
-        "New York": "/assets/dressing_helper.png",
-        "Boston": "/assets/dressing_helper2.png",
-        "New Haven": "/assets/dressing_helper.png",
-        "Beijing": "/assets/dressing_helper2.png"
+        "Philadelphia": "./assets/dressing_helper.png",
+        "New York": "./assets/dressing_helper.png",
+        "Boston": "./assets/dressing_helper2.png",
+        "New Haven": "./assets/dressing_helper.png",
+        "Beijing": "./assets/dressing_helper2.png"
     }
     const cityTempHour = {
         "Philadelphia": [2, 4, 6, 6, 7],
@@ -178,11 +178,11 @@
     }
 
     const cityBackgrounds = {
-    "Philadelphia": "/assets/rain.png",
-    "New York": "/assets/rain.png",
-    "Boston": "/assets/sunny.png",
-    "New Haven": "/assets/sunny.png",
-    "Beijing": "/assets/sunny.png"
+    "Philadelphia": "./assets/rain.png",
+    "New York": "./assets/rain.png",
+    "Boston": "./assets/sunny.png",
+    "New Haven": "./assets/sunny.png",
+    "Beijing": "./assets/sunny.png"
     };
 
     let currentTempC = cityTemps["Philadelphia"];
