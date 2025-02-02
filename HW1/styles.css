@@ -80,6 +80,7 @@ body {
     padding-right: 20px;
 }
 
+/*consulted GPT to make the container scrollable*/
 .temp-container-h {
     display: flex;
     overflow-x: auto;
