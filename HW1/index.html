@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Location Section -->
+        <div class="section">
+            <div class="flex">
+                <h2>Location</h2>
+                <select class="select" id="city-select">
+                    <option value="Philadelphia">Philadelphia</option>
+                    <option value="New York">New York</option>
+                    <option value="Boston">Boston</option>
+                    <option value="New Haven">New Haven</option>
+                    <option value="Beijing">Beijing</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Current Temperature Section -->
+        <div class="section">
+            <div class="flex">
+                <h2>Current Temperature</h2>
+                <select class="select" id="temp-unit">
+                <option value="C">°C</option>
+                <option value="F">°F</option>
+                </select>
+            </div>
+            <div class="temp-display" id="current-temp">3°C</div>
+        </div>
+
+        <!-- Message Section -->
+        <div class="section">
+            <div class="flex">
+                <div class="message-box">
+                    <p>Will stop raining in 40 mins.</p>
+                    <p>Cloudy conditions expected.</p>
+                </div>
+                <div class="message-figure">
+                    <img src="/assets/dressing_helper.png" alt="Weather Icon">
+                </div>
+            </div>
+        </div>
+
+        <!-- Hour Temperature Forecast -->
+        <div class="section">
+            <h2>Hourly Forecast</h2>
+            <div class="temp-container-h">
+                <div class="temp-hour">
+                    <span>10:00 AM</span>
+                    <span>2°C</span>
+                </div>
+                <div class="temp-hour">
+                    <span>11:00 AM</span>
+                    <span>4°C</span>
+                </div>
+                <div class="temp-hour">
+                    <span>12:00 PM</span>
+                    <span>6°C</span>
+                </div>
+                <div class="temp-hour">
+                    <span>01:00 PM</span>
+                    <span>6°C</span>
+                </div>
+                <div class="temp-hour">
+                    <span>02:00 PM</span>
+                    <span>7°C</span>
+                </div>
+            </div>
+        </div>
+          
+
+        <!-- Week Temperature Forecast -->
+        <div class="section">
+            <h2>Weekly Forecast</h2>
+            <div class="temp-container-v">
+                <div class="next-week-day">
+                    <span>Mon</span>
+                    <span>5°C</span>
+                </div>
+                <div class="next-week-day">
+                    <span>Tue</span>
+                    <span>2°C</span>
+                </div>
+                <div class="next-week-day">
+                    <span>Wed</span>
+                    <span>0°C</span>
+                </div>
+                <div class="next-week-day">
+                    <span>Thu</span>
+                    <span>8°C</span>
+                </div>
+                <div class="next-week-day">
+                    <span>Fri</span>
+                    <span>9°C</span>
+                </div>
+                <div class="next-week-day">
+                    <span>Sat</span>
+                    <span>1°C</span>
+                </div>
+                <div class="next-week-day">
+                    <span>Sun</span>
+                    <span>3°C</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-bar">
+            <div class="menu-item">
+                <img src="/assets/UV.png" alt="UV Index">
+                <span>UV Index</span>
+            </div>
+            <div class="menu-item">
+                <img src="/assets/wind_speed.png" alt="Wind Speed">
+                <span>Wind Speed</span>
+            </div>
+            <div class="menu-item">
+                <img src="/assets/humidity.png" alt="Humidity">
+                <span>Humidity</span>
+            </div>
+            <div class="menu-item">
+                <img src="/assets/visibility.png" alt="Visibility">
+                <span>Visibility</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const cityTemps = {
+        "Philadelphia": 3,
+        "New York": -1,
+        "Boston": -5,
+        "New Haven": -4,
+        "Beijing": -6
+        };
+    
+    const cityMessages = {
+        "Philadelphia": ["Will stop raining in 40 mins.", "Cloudy conditions expected."],
+        "New York": ["Rain expected to continue.", "Windy conditions."],
+        "Boston": ["Clear skies, nice day.", "Low chance of rain today."],
+        "New Haven": ["Overcast skies.", "Possible rain later."],
+        "Beijing": ["High pollution levels.", "Stay indoors if possible."]
+    };
+    const cityImg = {
+        "Philadelphia": "/assets/rain.png",
+        "New York": "/assets/rain.png",
+        "Boston": "/assets/sunny.png",
+        "New Haven": "/assets/sunny.png",
+        "Beijing": "/assets/sunny.png"
+    }
+
+    const cityDressing = {
+        "Philadelphia": "/assets/dressing_helper.png",
+        "New York": "/assets/dressing_helper.png",
+        "Boston": "/assets/dressing_helper2.png",
+        "New Haven": "/assets/dressing_helper.png",
+        "Beijing": "/assets/dressing_helper2.png"
+    }
+    const cityTempHour = {
+        "Philadelphia": [2, 4, 6, 6, 7],
+            "New York": [-2, -2, -1, 0, 2],
+            "Boston": [-6, -4, -4, -5, -5],
+            "New Haven": [-4, -2, -1, 0, 2],
+            "Beijing": [-6, -6, -4, -5, -6]
+    }
+
+    const cityTempWeek = {
+        "Philadelphia": [5, 2, 0, 8, 9, 1, 3],
+            "New York": [0, 2, 4, 0, -2, 1, 3],
+            "Boston": [-6, -8, -6, -5, -7, 1, -3],
+            "New Haven": [5, 2, 0, 8, 9, 1, 3],
+            "Beijing": [-6, -8, -6, -5, -7, -1, -3]
+    }
+
+    const cityBackgrounds = {
+    "Philadelphia": "/assets/rain.png",
+    "New York": "/assets/rain.png",
+    "Boston": "/assets/sunny.png",
+    "New Haven": "/assets/sunny.png",
+    "Beijing": "/assets/sunny.png"
+    };
+
+    let currentTempC = cityTemps["Philadelphia"];
+    const tempUnitSelect = document.getElementById("temp-unit");
+    const tempDisplay = document.getElementById("current-temp");
+    const citySelect = document.getElementById("city-select");
+    const tempContainerH = document.querySelector('.temp-container-h');
+    const tempContainerV = document.querySelector('.temp-container-v');
+    const messageBox = document.querySelector('.message-box');
+    const messageFigure = document.querySelector('.message-figure img');
+  
+    function celsiusToFahrenheit(celsius) {
+      return (celsius * 9 / 5) + 32;
+    }
+  
+    function fahrenheitToCelsius(fahrenheit) {
+      return (fahrenheit - 32) * 5 / 9;
+    }
+  
+    function updateData() {
+        const unit = tempUnitSelect.value;
+        
+        if (unit === "F") {
+            const tempF = celsiusToFahrenheit(currentTempC);
+            tempDisplay.textContent = `${tempF.toFixed(1)}°F`;
+        } else {
+            tempDisplay.textContent = `${currentTempC}°C`;
+        }
+        
+        const selectedCity = citySelect.value;
+        const hourlyTemps = cityTempHour[selectedCity];
+        const updatedHourlyTemps = hourlyTemps.map(temp => 
+            unit === "F" ? celsiusToFahrenheit(temp) : temp
+        );
+        
+        const hourlyDivs = tempContainerH.querySelectorAll('.temp-hour');
+        updatedHourlyTemps.forEach((temp, index) => {
+            hourlyDivs[index].querySelector('span:nth-child(2)').textContent = 
+            unit === "F" ? `${temp.toFixed(1)}°F` : `${temp}°C`;
+        });
+
+        const weeklyTemps = cityTempWeek[selectedCity];
+        const updatedWeeklyTemps = weeklyTemps.map(temp => 
+            unit === "F" ? celsiusToFahrenheit(temp) : temp
+        );
+
+        const weeklyDivs = tempContainerV.querySelectorAll('.next-week-day');
+        updatedWeeklyTemps.forEach((temp, index) => {
+            weeklyDivs[index].querySelector('span:nth-child(2)').textContent = 
+            unit === "F" ? `${temp.toFixed(1)}°F` : `${temp}°C`;
+        });
+
+        const messages = cityMessages[selectedCity];
+        messageBox.innerHTML = messages.map(msg => `<p>${msg}</p>`).join('');
+        messageFigure.src = cityDressing[selectedCity];
+
+        const backgroundImage = cityBackgrounds[selectedCity];
+        document.querySelector('.container').style.backgroundImage = `url(${backgroundImage})`;
+    }
+
+    tempUnitSelect.addEventListener("change", updateData);
+    citySelect.addEventListener("change", function() {
+        const selectedCity = citySelect.value;
+        currentTempC = cityTemps[selectedCity];
+        updateData();
+    });
+
+    updateData();
+  </script>
+  
+</html>
